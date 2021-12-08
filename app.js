@@ -5,9 +5,9 @@ const optionAVotesEl = document.getElementById('option-a-votes');
 const optionBTitleEl =  document.getElementById('option-b-title');
 const optionBVotesEl = document.getElementById('option-b-votes');
 
-const optionAAddButton = document.getElementById('option-a-button');
+const optionAAddButton = document.getElementById('option-a-add');
 const optionASubtractButton = document.getElementById('option-a-subtract');
-const optionBAddButton = document.getElementById('option-b-button');
+const optionBAddButton = document.getElementById('option-b-add');
 const optionBSubtractButton = document.getElementById('option-b-subtract');
 const closePollButton = document.getElementById('close-poll');
 const startPollButton = document.getElementById('start-poll');
@@ -22,13 +22,27 @@ const pastPollsArray = [];
 
 optionAAddButton.addEventListener('click', () => {
   optionAVotes++;
-  
+
   optionAVotesEl.textContent = optionAVotes;
 })
 
+optionBAddButton.addEventListener('click', () => {
+  optionBVotes++;
 
+  optionBVotesEl.textContent = optionBVotes;
+})
 // let state
+optionASubtractButton.addEventListener('click', () => {
+  optionAVotes--;
 
+  optionAVotesEl.textContent = optionAVotes;
+})
+
+optionBSubtractButton.addEventListener('click', () => {
+  optionBVotes--;
+
+  optionBVotesEl.textContent = optionBVotes;
+})
 // set event listeners 
   // get user input
   // use user input to update state 
