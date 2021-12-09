@@ -89,3 +89,50 @@ footer {
     background-color: var(--color3);
     box-shadow: var(--shadow);
 }
+form{
+    display: grid;
+    margin:10px;
+    padding:5px;
+}
+.top{
+    display:flex;
+    height:15%;
+    margin-top: 15%;
+
+}
+.left{
+    align-items: left;
+}
+
+button
+{
+    display:grid;
+   
+}
+.right{
+display:grid;
+float:right;
+justify-content: center;
+text-align: center;
+align-items: center;
+margin-right:50%;
+border-color: crimson;
+border:solid 2px;
+
+
+}
+.options{
+    display:flex;
+}
+.past-poll{
+    display: block;
+    border-color: darkblue;
+    border: solid 2px;
+    width: 30%;
+
+}
+#past-polls{
+    text-align: center;
+}
+    
+
