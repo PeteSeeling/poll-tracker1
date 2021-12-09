@@ -89,10 +89,22 @@ closePollButton.addEventListener('click', () => {
     
     for (let pastPoll of pastPollsArray) {
         const pQuestionEl = document.createElement('p');
+        const pOptionATitleEl = document.createElement('p');
+        const pOptionBTitleEl = document.createElement('p');
+        const pOptionAVotesEl = document.createElement('p');
+        const pOptionBVotesEl = document.createElement('p');
 
         pQuestionEl.textContent = pastPoll.question;
-
+        pOptionATitleEl.textContent = pastPoll.optionATitle;
+        pOptionBTitleEl.textContent = pastPoll.optionBTitle;
+        pOptionAVotesEl.textContent = pastPoll.optionAVotes;
+        pOptionBVotesEl.textContent = pastPoll.optionBVotes;
+  
         pastPollsEl.append(pQuestionEl);
+        pastPollsEl.append(pOptionATitleEl);
+        pastPollsEl.append(pOptionBTitleEl);
+        pastPollsEl.append(pOptionAVotesEl);
+        pastPollsEl.append(pOptionBVotesEl);
 
     }
 });
