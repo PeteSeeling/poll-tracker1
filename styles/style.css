@@ -113,14 +113,23 @@ button
 display:grid;
 float:right;
 justify-content: center;
+text-align: center;
 align-items: center;
 margin-right:50%;
-top:10%;
+border-color: crimson;
+border:solid 2px;
+
 
 }
 .options{
     display:flex;
 }
+.past-poll{
+    display: block;
+    border-color: darkblue;
+    border: solid 2px;
+    width: 30%;
 
+}
     
 
