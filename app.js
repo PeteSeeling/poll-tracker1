@@ -62,15 +62,42 @@ form.addEventListener('submit', (e) =>{
     optionBTitleEl.textContent = optionBTitle;
 });
 startPollButton.addEventListener('click', () => {
-  
+    displayCurrentPoll();
+   
  
 });
 
 
 closePollButton.addEventListener('click', () => {
     form.reset();
-   
+
+    const poll = {
+        question: question,
+        optionATitle: optionATitle,
+        optionBTitle: optionBTitle,
+        optionAVotes: optionAVotes,
+        optionBVotes: optionBVotes,
+    };
+    
+    pastPollsArray.push(poll);
+
+    question = '';
+    optionATitle = '';
+    optionBTitle = '';
+
+    displayCurrentPoll();
+    
+    for (let pastPoll of pastPollsArray) {
+        const pQuestionEl = document.createElement('p');
+
+        pQuestionEl.textContent = pastPoll.question;
+
+        pastPollsEl.append(pQuestionEl);
+
+    }
 });
+   
+  
 
 
 
