@@ -71,51 +71,73 @@ startPollButton.addEventListener('click', () => {
 closePollButton.addEventListener('click', () => {
     form.reset();
 
-    const poll = {
+    const poll = makePoll();
+    pastPollsArray.push(poll);
+
+   
+
+    displayCurrentPoll();
+    renderPastPoll();
+    displayAllPolls();
+         
+    resetState();
+}
+);
+   
+
+
+
+function makePoll(){
+    
+    return {
         question: question,
         optionATitle: optionATitle,
         optionBTitle: optionBTitle,
         optionAVotes: optionAVotes,
         optionBVotes: optionBVotes,
-    };
-    
-    pastPollsArray.push(poll);
+    };}
 
+function resetState(){
     question = '';
     optionATitle = '';
     optionBTitle = '';
+  
+  
+}
 
-    displayCurrentPoll();
+
+function displayAllPolls(){
     
-    for (let pastPoll of pastPollsArray) {
-        const pQuestionEl = document.createElement('p');
-        const pOptionATitleEl = document.createElement('p');
-        const pOptionBTitleEl = document.createElement('p');
-        const pOptionAVotesEl = document.createElement('p');
-        const pOptionBVotesEl = document.createElement('p');
-
-        pQuestionEl.textContent = pastPoll.question;
-        pOptionATitleEl.textContent = pastPoll.optionATitle;
-        pOptionBTitleEl.textContent = pastPoll.optionBTitle;
-        pOptionAVotesEl.textContent = pastPoll.optionAVotes;
-        pOptionBVotesEl.textContent = pastPoll.optionBVotes;
+    pollQuestionEl.textContent = question;
+    optionATitleEl.textContent = optionATitle;
+    optionBTitleEl.textContent = optionBTitle;
+    optionAVotesEl.textContent = optionAVotes;
+    optionBVotesEl.textContent = optionBVotes;
+    
   
-        pastPollsEl.append(pQuestionEl);
-        pastPollsEl.append(pOptionATitleEl);
-        pastPollsEl.append(pOptionBTitleEl);
-        pastPollsEl.append(pOptionAVotesEl);
-        pastPollsEl.append(pOptionBVotesEl);
-
-    }
-});
+}
+function renderPastPoll(pastPoll){
    
-  
+
+    const container = document.createElement('div');
+    const pQuestionEl = document.createElement('p');
+    const pOptionATitleEl = document.createElement('p');
+    const pOptionBTitleEl = document.createElement('p'); const pOptionAVotesEl = document.createElement('p');
+    const pOptionBVotesEl = document.createElement('p');
+
+    container.classList.add('past-poll');
+    pQuestionEl.textContent = question;
+    pOptionATitleEl.textContent = optionATitle;
+    pOptionBTitleEl.textContent = optionBTitle;
+    pOptionAVotesEl.textContent = optionAVotes;
+    pOptionBVotesEl.textContent = optionBVotes;
+
+    container.append(pQuestionEl, pOptionATitleEl, pOptionBTitleEl, pOptionAVotesEl, pOptionBVotesEl);
+    pastPollsEl.append(container);
+    return container;
 
 
-
-
-
-
+}
 
 // set event listeners 
   // get user input

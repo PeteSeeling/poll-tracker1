@@ -125,14 +125,16 @@ border:solid 2px;
     display:flex;
 }
 .past-poll{
-    display: block;
+    display: flex;
     border-color: darkblue;
     border: solid 2px;
-    width: 30%;
+    width: 100%;
+    justify-content: center;
 
 }
 #past-polls{
     text-align: center;
 }
+
     
 
