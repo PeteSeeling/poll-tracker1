@@ -135,6 +135,10 @@ border:solid 2px;
 #past-polls{
     text-align: center;
 }
-
+#poll-question{
+    text-align:center;
+    justify-content: center;
+    
+}
     
 
