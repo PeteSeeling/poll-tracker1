@@ -123,6 +123,19 @@ border:solid 2px;
 }
 .options{
     display:flex;
+
+  
+}
+
+#option-a{
+    display:flex;
+    float:left;
+
+}
+
+#option-b{
+display: flex;
+float:right;
 }
 .past-poll{
     display: flex;
@@ -130,15 +143,26 @@ border:solid 2px;
     border: solid 2px;
     width: 100%;
     justify-content: center;
+   
 
 }
 #past-polls{
+    display:block;
     text-align: center;
+    width: 100%;
 }
 #poll-question{
     text-align:center;
     justify-content: center;
+    width: 100%;
     
+}
+
+.pOptionA .pOptionAVotes{
+    display:flex;
+    width:100%
+
+   
 }
     
 

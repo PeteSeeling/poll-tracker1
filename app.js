@@ -132,6 +132,8 @@ function renderPastPoll(pastPoll){
     pOptionAVotesEl.textContent = optionAVotes;
     pOptionBVotesEl.textContent = optionBVotes;
 
+ 
+
     container.append(pQuestionEl, pOptionATitleEl, pOptionBTitleEl, pOptionAVotesEl, pOptionBVotesEl);
     pastPollsEl.append(container);
     return container;
