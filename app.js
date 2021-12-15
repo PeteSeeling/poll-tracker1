@@ -1,5 +1,5 @@
 
-import { displayCurrentPoll } from './utils.js';
+
 
 const form = document.getElementById('form');
 const optionATitleEl = document.getElementById('option-a-title');
@@ -71,52 +71,87 @@ startPollButton.addEventListener('click', () => {
 closePollButton.addEventListener('click', () => {
     form.reset();
 
-    const poll = {
+    const poll = makePoll();
+    pastPollsArray.push(poll);
+    resetState();
+   
+
+    displayCurrentPoll();
+    
+   
+    displayAllPolls();
+         
+  
+}
+);
+   
+
+
+
+function makePoll(){
+    
+    return {
         question: question,
         optionATitle: optionATitle,
         optionBTitle: optionBTitle,
         optionAVotes: optionAVotes,
         optionBVotes: optionBVotes,
-    };
-    
-    pastPollsArray.push(poll);
+    };}
 
+function resetState(){
     question = '';
     optionATitle = '';
     optionBTitle = '';
+    optionAVotes = 0;
+    optionBVotes = 0;
+  
+  
+}
 
-    displayCurrentPoll();
+
+function displayAllPolls(){
     
-    for (let pastPoll of pastPollsArray) {
-        const pQuestionEl = document.createElement('p');
-        const pOptionATitleEl = document.createElement('p');
-        const pOptionBTitleEl = document.createElement('p');
-        const pOptionAVotesEl = document.createElement('p');
-        const pOptionBVotesEl = document.createElement('p');
+    for (let pastPoll of pastPollsArray){
+        const pastPollEl = renderPastPoll(pastPoll);
 
-        pQuestionEl.textContent = pastPoll.question;
-        pOptionATitleEl.textContent = pastPoll.optionATitle;
-        pOptionBTitleEl.textContent = pastPoll.optionBTitle;
-        pOptionAVotesEl.textContent = pastPoll.optionAVotes;
-        pOptionBVotesEl.textContent = pastPoll.optionBVotes;
-  
-        pastPollsEl.append(pQuestionEl);
-        pastPollsEl.append(pOptionATitleEl);
-        pastPollsEl.append(pOptionBTitleEl);
-        pastPollsEl.append(pOptionAVotesEl);
-        pastPollsEl.append(pOptionBVotesEl);
-
+        pastPollsEl.append(pastPollEl);
     }
-});
-   
+    
   
+}
+function renderPastPoll(pastPoll){
+   
+
+    const container = document.createElement('div');
+    const pQuestionEl = document.createElement('p');
+    const pOptionATitleEl = document.createElement('p');
+    const pOptionBTitleEl = document.createElement('p'); const pOptionAVotesEl = document.createElement('p');
+    const pOptionBVotesEl = document.createElement('p');
+
+    container.classList.add('past-poll');
+    pQuestionEl.textContent = pastPoll.question;
+    pOptionATitleEl.textContent = pastPoll.optionATitle;
+    pOptionBTitleEl.textContent = pastPoll.optionBTitle;
+    pOptionAVotesEl.textContent = pastPoll.optionAVotes;
+    pOptionBVotesEl.textContent = pastPoll.optionBVotes;
+
+ 
+
+    container.append(pQuestionEl, pOptionATitleEl, pOptionAVotesEl, pOptionBTitleEl, pOptionBVotesEl);
+    pastPollsEl.append(container);
+    return container;
 
 
+}
+function displayCurrentPoll(){
 
-
-
-
-
+    pollQuestionEl.textContent = question;
+    optionATitleEl.textContent = optionATitle;
+    optionBTitleEl.textContent = optionBTitle;
+    optionAVotesEl.textContent = optionAVotes;
+    optionBVotesEl.textContent = optionBVotes;
+    
+}
 // set event listeners 
   // get user input
   // use user input to update state 
