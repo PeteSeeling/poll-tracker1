@@ -1,5 +1,5 @@
 
-import { displayCurrentPoll } from './utils.js';
+
 
 const form = document.getElementById('form');
 const optionATitleEl = document.getElementById('option-a-title');
@@ -73,14 +73,15 @@ closePollButton.addEventListener('click', () => {
 
     const poll = makePoll();
     pastPollsArray.push(poll);
-
+    resetState();
    
 
     displayCurrentPoll();
-    renderPastPoll();
+    
+   
     displayAllPolls();
          
-    resetState();
+  
 }
 );
    
@@ -101,6 +102,8 @@ function resetState(){
     question = '';
     optionATitle = '';
     optionBTitle = '';
+    optionAVotes = 0;
+    optionBVotes = 0;
   
   
 }
@@ -108,11 +111,11 @@ function resetState(){
 
 function displayAllPolls(){
     
-    pollQuestionEl.textContent = question;
-    optionATitleEl.textContent = optionATitle;
-    optionBTitleEl.textContent = optionBTitle;
-    optionAVotesEl.textContent = optionAVotes;
-    optionBVotesEl.textContent = optionBVotes;
+    for (let pastPoll of pastPollsArray){
+        const pastPollEl = renderPastPoll(pastPoll);
+
+        pastPollsEl.append(pastPollEl);
+    }
     
   
 }
@@ -126,21 +129,29 @@ function renderPastPoll(pastPoll){
     const pOptionBVotesEl = document.createElement('p');
 
     container.classList.add('past-poll');
-    pQuestionEl.textContent = question;
-    pOptionATitleEl.textContent = optionATitle;
-    pOptionBTitleEl.textContent = optionBTitle;
-    pOptionAVotesEl.textContent = optionAVotes;
-    pOptionBVotesEl.textContent = optionBVotes;
+    pQuestionEl.textContent = pastPoll.question;
+    pOptionATitleEl.textContent = pastPoll.optionATitle;
+    pOptionBTitleEl.textContent = pastPoll.optionBTitle;
+    pOptionAVotesEl.textContent = pastPoll.optionAVotes;
+    pOptionBVotesEl.textContent = pastPoll.optionBVotes;
 
  
 
-    container.append(pQuestionEl, pOptionATitleEl, pOptionBTitleEl, pOptionAVotesEl, pOptionBVotesEl);
+    container.append(pQuestionEl, pOptionATitleEl, pOptionAVotesEl, pOptionBTitleEl, pOptionBVotesEl);
     pastPollsEl.append(container);
     return container;
 
 
 }
+function displayCurrentPoll(){
 
+    pollQuestionEl.textContent = question;
+    optionATitleEl.textContent = optionATitle;
+    optionBTitleEl.textContent = optionBTitle;
+    optionAVotesEl.textContent = optionAVotes;
+    optionBVotesEl.textContent = optionBVotes;
+    
+}
 // set event listeners 
   // get user input
   // use user input to update state 

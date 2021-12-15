@@ -110,7 +110,7 @@ button
    
 }
 .right{
-display:grid;
+display:block;
 float:right;
 justify-content: center;
 text-align: center;
